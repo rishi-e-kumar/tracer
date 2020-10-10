@@ -12,7 +12,7 @@ using namespace scad;
 constexpr bool kWriteTestKeys = false;
 constexpr bool kIncludeDactylRef = false;
 // Add the caps into the stl for testing.
-constexpr bool kAddCaps = false;
+constexpr bool kAddCaps = true;
 
 enum class Direction { UP, DOWN, LEFT, RIGHT };
 
@@ -28,7 +28,7 @@ int main() {
   printf("generating..\n");
   TransformList key_origin;
   //  key_origin.RotateY(10);
-  key_origin.Translate(-20, -40, 3);
+  key_origin.Translate(-20, -40, 3 - 3);
 
   // This is where all of the logic to position the keys is done. Everything below is cosmetic
   // trying to build the case.
@@ -41,7 +41,7 @@ int main() {
     for (Key* key : test_keys) {
       key->add_side_nub = false;
       key->add_top_nub = false;
-      key->extra_z = 2;
+      key->extra_z = 2; //2
       test_shapes.push_back(key->GetSwitch());
       if (kAddCaps) {
         test_shapes.push_back(key->GetCap().Color("red"));
