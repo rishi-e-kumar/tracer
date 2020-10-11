@@ -12,7 +12,7 @@ using namespace scad;
 constexpr bool kWriteTestKeys = false;
 constexpr bool kIncludeDactylRef = false;
 // Add the caps into the stl for testing.
-constexpr bool kAddCaps = false;
+constexpr bool kAddCaps = true;
 
 enum class Direction { UP, DOWN, LEFT, RIGHT };
 
@@ -427,7 +427,7 @@ int main() {
 
   Shape result = UnionAll(shapes);
   // Subtracting is expensive to preview and is best to disable while testing.
-  // result = result.Subtract(UnionAll(negative_shapes));
+  result = result.Subtract(UnionAll(negative_shapes));
   result.WriteToFile("left.scad");
 
   {
