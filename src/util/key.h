@@ -11,16 +11,16 @@
 namespace scad {
 
 // All sizes in mm.
-const double kSwitchWidth = 14.4;  //14.4
-const double kSwitchThickness = 4; //4
-const double kWallWidth = 2;  //2
+const double kSwitchWidth = 14.4;
+const double kSwitchThickness = 4;
+const double kWallWidth = 2;
 
 const double kDsaHeight = 8;
 const double kSaHeight = 12.5;
 // This is the height of the taller side on the key. The short side has kSaHeight.
 const double kSaEdgeHeight = 13.7;
-const double kDsaTopSize = 13.2;     // 0.5 * kMmPerInch; //13.2
-const double kDsaBottomSize = 18.4;  // 0.725 * kMmPerInch; //18.4
+const double kDsaTopSize = 13.2;     // 0.5 * kMmPerInch;
+const double kDsaBottomSize = 18.4;  // 0.725 * kMmPerInch;
 // The size half way up the key used to generate the cap shape.
 const double kDsaHalfSize = 16.2;
 const double kSaHalfSize = 17.2;
@@ -32,7 +32,7 @@ const double kSaTallEdgeHeight = 16.5;
 const double kSwitchHorizontalOffset = kSwitchWidth / 2 + kWallWidth;
 
 // This is the distance between the top of the switch plate and the tip of the switch stem.
-const double kSwitchTipOffset = 10; //10
+const double kSwitchTipOffset = 10;
 
 enum class KeyType {
   DSA,

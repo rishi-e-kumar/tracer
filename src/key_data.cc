@@ -10,22 +10,22 @@ namespace {
 
 constexpr double kDefaultKeySpacing = 19;
 // The direct distance between switch tops in the bowl.
-constexpr double kBowlKeySpacing = 16.5;
+constexpr double kBowlKeySpacing = 18;
 
-
-constexpr double kDColumnRadius = 55.1;
-constexpr double kAColumnRadius = 55.1;
-constexpr double kSColumnRadius = 60.1;
-constexpr double kGColumnRadius = 65.1;
-constexpr double kFColumnRadius = 70.1;
-constexpr double kCapsColumnRadius = 60.1;
-
-// constexpr double kDColumnRadius = 59;
-// constexpr double kAColumnRadius = 59;
-// constexpr double kSColumnRadius = 59;
-// constexpr double kGColumnRadius = 59;
-// constexpr double kFColumnRadius = 59;
-// constexpr double kCapsColumnRadius = 59;
+/*
+constexpr double kDColumnRadius = 55;
+constexpr double kAColumnRadius = 55;
+constexpr double kSColumnRadius = 60;
+constexpr double kGColumnRadius = 65;
+constexpr double kFColumnRadius = 70;
+constexpr double kCapsColumnRadius = 60;
+*/
+constexpr double kDColumnRadius = 70;
+constexpr double kAColumnRadius = 70;
+constexpr double kSColumnRadius = 70;
+constexpr double kGColumnRadius = 70;
+constexpr double kFColumnRadius = 70;
+constexpr double kCapsColumnRadius = 70;
 
 // Rotates a key about the x axis until it has traveled the direct distance (not on the arc).
 Key GetRotatedKey(double radius, bool up) {
@@ -87,7 +87,7 @@ KeyData::KeyData(TransformList key_origin) {
   key_th1.Configure([&](Key& k) {
     k.name = "key_th1";
     k.SetParent(key_origin);
-    k.SetPosition(58, -9.18, 42.83);
+    k.SetPosition(60, -9.18, 42.83);
     k.t().x += -8;
     k.t().y += 3;
     k.t().z += 1.5;
@@ -101,15 +101,15 @@ KeyData::KeyData(TransformList key_origin) {
   key_th2.Configure([&](Key& k) {
     k.name = "key_th2";
     k.SetParent(key_th1);
-    k.SetPosition(17.5 + 1, -1, 2); //    k.SetPosition(19 + 1, -1, 2);
+    k.SetPosition(19 + 1, -1, 2);
     k.t().y += 4;
   });
 
   key_th3.Configure([&](Key& k) {
     k.name = "key_th3";
     k.SetParent(key_th2);
-    k.SetPosition(17.5 + 1 + 4, -7, 1);
-    k.t().ry = 18;
+    k.SetPosition(19 + 1, -7, 1);
+    //k.t().ry = -18;
     k.t().y += 1;
   });
 
@@ -149,8 +149,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "key_th_top3";
     // k.type = KeyType::SA;
     k.SetParent(key_th3);
-    k.SetPosition(0 - 5, 19, 2.7);
-    k.t().ry = -18;
+    k.SetPosition(0, 19, 2.7);
     k.t().y += 1;
   });
 
@@ -175,7 +174,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "f";
 
     k.SetParent(key_d);
-    k.SetPosition(18.938, -0.950, 5.249);//    k.SetPosition(19.938, -0.950, 5.249);
+    k.SetPosition(19.938, -0.950, 5.249);
     k.t().ry = -5;
     k.t().y += -2;
   });
@@ -184,7 +183,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "g";
 
     k.SetParent(key_f);
-    k.SetPosition(17.65, -1.310, 3.305);//    k.SetPosition(18.65, -1.310, 3.305);
+    k.SetPosition(18.65, -1.310, 3.305);
     k.t().ry = -5;
 
     k.t().z += -2.3;
@@ -196,7 +195,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "s";
 
     k.SetParent(key_d);
-    k.SetPosition(-18.971, -0.090, 5.430);//    k.SetPosition(-19.571, -0.090, 5.430);
+    k.SetPosition(-19.571, -0.090, 5.430);
     k.t().ry = 5;
 
     k.t().y += -2.5;
@@ -207,11 +206,10 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "a";
 
     k.SetParent(key_s);
-    k.SetPosition(-20.987, -6.170, 5.358);//    k.SetPosition(-20.887, -6.170, 5.358);
+    k.SetPosition(-20.887, -6.170, 5.358);
+
     k.t().y += -6;
     k.t().ry = 3;
-    k.t().rz = 5;
-
     //k.t().z += -2;
     k.t().x += 0;
   });
@@ -222,7 +220,6 @@ KeyData::KeyData(TransformList key_origin) {
     k.SetParent(key_a);
     k.SetPosition(-22.597, 0.000, 0.207);
     k.t().ry = 10;
-
     k.t().z += 3;
     k.t().y += 3;
   });
@@ -355,17 +352,17 @@ KeyData::KeyData(TransformList key_origin) {
   });
 
   // A column
-  key_q = GetRotatedKey(kAColumnRadius, true);
+  key_q = GetRotatedKey(70, true);
   key_q.Configure([&](Key& k) {
     k.name = "q";
     k.SetParent(key_a);
 
     k.AddTransform();
-    // k.t().y = 3;
-    // k.t().z = -2;
+    k.t().y = 3;
+    k.t().z = -2;
 
-    // k.t().y += 1;
-    // k.t().z += -2;
+    k.t().y += 1;
+    k.t().z += -2;
   });
 
   key_1 = GetRotatedKey(kAColumnRadius, true);
