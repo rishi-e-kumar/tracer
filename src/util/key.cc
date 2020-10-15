@@ -11,7 +11,7 @@
 namespace scad {
 namespace {
 
-const double kDsaSwitchZOffset = kDsaHeight + 6.4;
+const double kDsaSwitchZOffset = kDsaHeight + 6.4; //6.4 for home, 2.4 for pressed
 const double kSaSwitchZOffset = kSaHeight + 6.4;
 
 struct CapSegment {

@@ -4,6 +4,8 @@
 
 #include "key.h"
 #include "key_data.h"
+#include "microcontrollerholder.h"
+#include "key_data.h"
 #include "scad.h"
 #include "transform.h"
 
@@ -28,7 +30,7 @@ int main() {
   printf("generating..\n");
   TransformList key_origin;
   //  key_origin.RotateY(10);
-  key_origin.Translate(-20, -40, 3);
+  key_origin.Translate(-20, -40, -1);
 
   // This is where all of the logic to position the keys is done. Everything below is cosmetic
   // trying to build the case.
@@ -254,7 +256,10 @@ int main() {
         {d.key_th_top3.GetTopRight(), up},
         {d.key_th_top3.GetTopRight(), right},
         {d.key_th_top3.GetBottomRight(), right},
+        // {d.key_th_top3.GetBottomRight(), down},
 
+        // {d.key_th3.GetTopRight(), up}
+        {d.key_th3.GetTopRight().Translate(-1.5,-5,0), right},
         {d.key_th3.GetTopRight(), right},
         {d.key_th3.GetBottomRight(), right},
 
@@ -397,8 +402,19 @@ int main() {
     };
   }
 
+  // add microcontroller
+  glm::vec3 mcu_position = d.key_t.GetTopRight().Apply(kOrigin);
+  mcu_position.z = 16.5;
+  shapes.push_back(MakeMCU()
+                .Translate(mcu_position));
+
+  //
   std::vector<Shape> negative_shapes;
 
+  // mcu usb hole
+  negative_shapes.push_back(MakeUSB(MCUSBHolePadScale)
+                              .Translate(mcu_position)
+                              .TranslateY(7));
   Key b_cut = d.key_b;
   b_cut.Configure([&](Key& k) {
     k.AddTransform();
@@ -409,16 +425,16 @@ int main() {
   negative_shapes.push_back(b_cut.GetInverseSwitch());
   AddShapes(&negative_shapes, screw_holes);
 
+
   // Cut out holes for cords. Inserts can be printed to fit in.
   Shape trrs_hole = Cylinder(20, 5, 30).RotateX(90);
 
   glm::vec3 trrs_hole_location = d.key_r.GetTopRight().Apply(kOrigin);
   trrs_hole_location.z = 11;
   trrs_hole_location.x -= 5;
-  negative_shapes.push_back(trrs_hole.Translate(trrs_hole_location));
+  // negative_shapes.push_back(trrs_hole.Translate(trrs_hole_location));
 
   {
-
     Shape bottom = Cube(5, 1.5, 8).TranslateZ(8/2).TranslateY((-5.3 / 2) + (-1.5 / 2));
     Shape c = Cylinder(2.5, 8, 30).TranslateZ(2.5 / 2);
     Shape cut = Cube(6.3, 5.3, 8);
@@ -436,7 +452,8 @@ int main() {
     usb_location.y += 4;
     Shape c = Cylinder(8, 2.5, 30).RotateX(90).Translate(usb_location);
     Shape usb_hole = Hull(c, c.Projection().LinearExtrude(.1));
-    result.Subtract(usb_hole).MirrorX().WriteToFile("right.scad");
+    // result.Subtract(usb_hole).MirrorX().WriteToFile("right.scad");
+    result.MirrorX().WriteToFile("right.scad");
 
     double thick = 3.8;
     Shape front = Cube(4.8, thick, 7).TranslateZ(7/2);

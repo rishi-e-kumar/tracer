@@ -10,7 +10,7 @@ namespace {
 
 constexpr double kDefaultKeySpacing = 19;
 // The direct distance between switch tops in the bowl.
-constexpr double kBowlKeySpacing = 18;
+constexpr double kBowlKeySpacing = 16.5;
 
 /*
 constexpr double kDColumnRadius = 55;
@@ -20,12 +20,12 @@ constexpr double kGColumnRadius = 65;
 constexpr double kFColumnRadius = 70;
 constexpr double kCapsColumnRadius = 60;
 */
-constexpr double kDColumnRadius = 70;
-constexpr double kAColumnRadius = 70;
-constexpr double kSColumnRadius = 70;
-constexpr double kGColumnRadius = 70;
-constexpr double kFColumnRadius = 70;
-constexpr double kCapsColumnRadius = 70;
+constexpr double kDColumnRadius = 60.1;
+constexpr double kAColumnRadius = 60.1;
+constexpr double kSColumnRadius = 60.1;
+constexpr double kGColumnRadius = 60.1;
+constexpr double kFColumnRadius = 60.1;
+constexpr double kCapsColumnRadius = 60.1;
 
 // Rotates a key about the x axis until it has traveled the direct distance (not on the arc).
 Key GetRotatedKey(double radius, bool up) {
@@ -87,7 +87,7 @@ KeyData::KeyData(TransformList key_origin) {
   key_th1.Configure([&](Key& k) {
     k.name = "key_th1";
     k.SetParent(key_origin);
-    k.SetPosition(60, -9.18, 42.83);
+    k.SetPosition(58, -9.18, 42.83);
     k.t().x += -8;
     k.t().y += 3;
     k.t().z += 1.5;
@@ -101,16 +101,17 @@ KeyData::KeyData(TransformList key_origin) {
   key_th2.Configure([&](Key& k) {
     k.name = "key_th2";
     k.SetParent(key_th1);
-    k.SetPosition(19 + 1, -1, 2);
+    k.SetPosition(19 + 1 - 1, -1, 2);
     k.t().y += 4;
   });
 
   key_th3.Configure([&](Key& k) {
     k.name = "key_th3";
     k.SetParent(key_th2);
-    k.SetPosition(19 + 1, -7, 1);
-    //k.t().ry = -18;
+    k.SetPosition(19 + 1 + 4, -7, 1);
+    k.t().ry = 18;
     k.t().y += 1;
+
   });
 
 
@@ -124,8 +125,10 @@ KeyData::KeyData(TransformList key_origin) {
 
     k.AddTransform();
     k.t().ry = 8;
-    k.t().x = 4;
-    k.t().z = -1;
+    k.t().rx = 5;
+    k.t().x = 8;
+    k.t().z = -4;
+    k.t().y = 0;
   });
 
   key_th_top2.Configure([&](Key& k) {
@@ -139,7 +142,7 @@ KeyData::KeyData(TransformList key_origin) {
     // k.t().rx = 15;
     // k.t().ry = -18;
     k.t().x += 6;
-    k.t().z += 2;
+    k.t().z += 4;
     k.t().rx = 10;
     k.t().ry = -10;
     // k.t().y += -2;
@@ -148,8 +151,8 @@ KeyData::KeyData(TransformList key_origin) {
   key_th_top3.Configure([&](Key& k) {
     k.name = "key_th_top3";
     // k.type = KeyType::SA;
-    k.SetParent(key_th3);
-    k.SetPosition(0, 19, 2.7);
+    k.SetParent(key_th2);
+    k.SetPosition(19 + 1 - 1, 19 - 7, 2 + 2.7);
     k.t().y += 1;
   });
 
@@ -352,17 +355,19 @@ KeyData::KeyData(TransformList key_origin) {
   });
 
   // A column
-  key_q = GetRotatedKey(70, true);
+  key_q = GetRotatedKey(kAColumnRadius, true);
   key_q.Configure([&](Key& k) {
     k.name = "q";
     k.SetParent(key_a);
 
     k.AddTransform();
-    k.t().y = 3;
-    k.t().z = -2;
+    // k.t().y = 3;
+    k.t().z += 3;
+    k.t().y -= 2.5;
+    k.t().rx += 25;
 
-    k.t().y += 1;
-    k.t().z += -2;
+    // k.t().y += 1;
+    // k.t().z += -2;
   });
 
   key_1 = GetRotatedKey(kAColumnRadius, true);
