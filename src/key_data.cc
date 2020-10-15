@@ -211,10 +211,11 @@ KeyData::KeyData(TransformList key_origin) {
     k.SetParent(key_s);
     k.SetPosition(-20.887, -6.170, 5.358);
 
-    k.t().y += -6;
+    k.t().y += -6 - 4;
     k.t().ry = 3;
+    k.t().rz = 6;
     //k.t().z += -2;
-    k.t().x += 0;
+    k.t().x += -2;
   });
 
   key_caps.Configure([&](Key& k) {
@@ -361,10 +362,9 @@ KeyData::KeyData(TransformList key_origin) {
     k.SetParent(key_a);
 
     k.AddTransform();
-    // k.t().y = 3;
-    k.t().z += 3;
-    k.t().y -= 2.5;
-    k.t().rx += 25;
+    // k.t().z += 3;
+    // k.t().y -= 2.5;
+    // k.t().rx += 25;
 
     // k.t().y += 1;
     // k.t().z += -2;
