@@ -88,7 +88,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "key_th1";
     k.SetParent(key_origin);
     k.SetPosition(58, -9.18, 42.83);
-    k.t().x += -8;
+    k.t().x += -8+3;
     k.t().y += 3;
     k.t().z += 1.5;
 
@@ -102,6 +102,7 @@ KeyData::KeyData(TransformList key_origin) {
     k.name = "key_th2";
     k.SetParent(key_th1);
     k.SetPosition(19 + 1 - 1, -1, 2);
+    k.t().x += 3;
     k.t().y += 4;
   });
 

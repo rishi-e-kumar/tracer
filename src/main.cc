@@ -86,7 +86,7 @@ int main() {
   shapes.push_back(ConnectMainKeys(d));
   shapes.push_back(Union(ConnectVertical(d.key_q, d.key_a),
                          ConnectVertical(d.key_a, d.key_z),
-                         ConnectHorizontal(d.key_th2, d.key_th3),
+                         // ConnectHorizontal(d.key_th2, d.key_th3),
                          ConnectHorizontal(d.key_th1, d.key_th2)));
 
   shapes.push_back(TriFan(d.key_z.GetBottomRight(),
@@ -126,66 +126,85 @@ int main() {
                               d.key_left_arrow.GetBottomRight(),
                               d.key_th1.GetTopLeft(),
                           }));
+    shapes.push_back(TriMesh({
+        d.key_th2.GetTopLeft(),
+        d.key_b.GetBottomLeft(),
+        d.key_b.GetBottomRight(),
+    }));
+    
+    shapes.push_back(TriMesh({
+        d.key_th2.GetTopRight(),
+        d.key_th2.GetTopLeft(),
+        d.key_b.GetBottomRight(),        
+    }));
 
-  shapes.push_back(TriFan(d.key_th_top3.GetBottomLeft().Apply(GetPostConnector()),
-                          {
-                              d.key_th3.GetTopLeft().Apply(GetPostConnector()),
-                              d.key_th3.GetTopRight().Apply(GetPostConnector()),
-                              d.key_th_top3.GetBottomRight().Apply(GetPostConnector()),
-                          }));
+    shapes.push_back(TriMesh({
+        d.key_th1.GetTopRight(),
+        d.key_b.GetBottomLeft(),
+        d.key_th2.GetTopLeft(),        
+    }));
 
-  shapes.push_back(TriMesh({
-      d.key_th_top3.GetTopRight(),
-      d.key_th_top3.GetTopLeft(),
-      d.key_g.GetBottomRight(),
-  }));
-  shapes.push_back(TriMesh({
-      d.key_th_top3.GetTopLeft(-1).Apply(GetPostConnector(2)),
-      d.key_th_top3.GetBottomLeft(-1).Apply(GetPostConnector(2)),
-      d.key_th2.GetTopRight().Apply(GetPostConnector()),
-      d.key_th3.GetTopLeft().Apply(GetPostConnector()),
-  }));
-  shapes.push_back(TriFan(d.key_b.GetBottomRight(),
-                          {
-                              d.key_b.GetTopRight(),
-                              d.key_g.GetBottomRight(),
-                              d.key_th_top3.GetTopLeft(),
-                              d.key_th2.GetTopRight(),
-                              d.key_th2.GetTopLeft(),
-                          }));
-  shapes.push_back(TriFan(d.key_th2.GetTopLeft(),
-                          {
-                              d.key_th1.GetTopRight(),
-                              d.key_b.GetBottomLeft(),
-                              d.key_b.GetBottomRight(),
-                          }));
+  // shapes.push_back(TriFan(d.key_b.GetBottomRight().Apply(GetPostConnector()),
+  //                         {
+  //                             d.key_th2.GetTopRight().Apply(GetPostConnector()),
+  //                             // d.key_th2.GetBottomRight().Apply(GetPostConnector()),
+  //                             // d.key_th2.GetBottomLeft().Apply(GetPostConnector()),
+  //                         }));
 
-  shapes.push_back(TriFan(d.key_th_bottom2.GetTopRight(),
-                          {
-                              d.key_th_bottom2.GetBottomRight(),
-                              d.key_th3.GetBottomRight(),
-                              d.key_th3.GetBottomLeft(),
-                          }));
-  shapes.push_back(TriFan(d.key_th_bottom2.GetTopLeft(),
-                          {
-                              d.key_th3.GetBottomLeft(),
-                              d.key_th2.GetBottomRight(),
-                              d.key_th2.GetBottomLeft(),
-                          }));
-  shapes.push_back(TriFan(d.key_th_bottom2.GetBottomLeft(),
-                          {
-                              d.key_th1.GetBottomLeft(),
-                              d.key_th1.GetBottomRight(),
-                          }));
-  shapes.push_back(TriFan(d.key_th1.GetBottomRight(),
-                          {
-                              d.key_th_bottom2.GetBottomLeft(),
-                              d.key_th_bottom2.GetTopLeft(),
-                              d.key_th2.GetBottomLeft(),
-                          }));
-  shapes.push_back(Tri(d.key_th_bottom2.GetTopLeft().Apply(GetPostConnector()),
-                       d.key_th_bottom2.GetTopRight().Apply(GetPostConnector()),
-                       d.key_th3.GetBottomLeft(-1).Apply(GetPostConnector(2))));
+  // shapes.push_back(TriMesh({
+  //     d.key_th2.GetTopRight(),
+      
+  //     d.key_th2.GetTopLeft(),
+  //     d.key_b.GetBottomLeft(),
+  //     d.key_b.GetBottomRight(),
+  // }));
+  // shapes.push_back(TriMesh({
+  //     d.key_th_top3.GetTopLeft(-1).Apply(GetPostConnector(2)),
+  //     d.key_th_top3.GetBottomLeft(-1).Apply(GetPostConnector(2)),
+  //     d.key_th2.GetTopRight().Apply(GetPostConnector()),
+  //     d.key_th3.GetTopLeft().Apply(GetPostConnector()),
+  // }));
+  // shapes.push_back(TriFan(d.key_b.GetBottomRight(),
+  //                         {
+  //                             d.key_b.GetTopRight(),
+  //                             d.key_g.GetBottomRight(),
+  //                             d.key_th_top3.GetTopLeft(),
+  //                             d.key_th2.GetTopRight(),
+  //                             d.key_th2.GetTopLeft(),
+  //                         }));
+  // shapes.push_back(TriFan(d.key_th2.GetTopLeft(),
+  //                         {
+  //                             d.key_th1.GetTopRight(),
+  //                             d.key_b.GetBottomLeft(),
+  //                             d.key_b.GetBottomRight(),
+  //                         }));
+
+  // shapes.push_back(TriFan(d.key_th_bottom2.GetTopRight(),
+  //                         {
+  //                             d.key_th_bottom2.GetBottomRight(),
+  //                             d.key_th3.GetBottomRight(),
+  //                             d.key_th3.GetBottomLeft(),
+  //                         }));
+  // shapes.push_back(TriFan(d.key_th_bottom2.GetTopLeft(),
+  //                         {
+  //                             d.key_th3.GetBottomLeft(),
+  //                             d.key_th2.GetBottomRight(),
+  //                             d.key_th2.GetBottomLeft(),
+  //                         }));
+  // shapes.push_back(TriFan(d.key_th_bottom2.GetBottomLeft(),
+  //                         {
+  //                             d.key_th1.GetBottomLeft(),
+  //                             d.key_th1.GetBottomRight(),
+  //                         }));
+  // shapes.push_back(TriFan(d.key_th1.GetBottomRight(),
+  //                         {
+  //                             d.key_th_bottom2.GetBottomLeft(),
+  //                             d.key_th_bottom2.GetTopLeft(),
+  //                             d.key_th2.GetBottomLeft(),
+  //                         }));
+  // shapes.push_back(Tri(d.key_th_bottom2.GetTopLeft().Apply(GetPostConnector()),
+  //                      d.key_th_bottom2.GetTopRight().Apply(GetPostConnector()),
+  //                      d.key_th3.GetBottomLeft(-1).Apply(GetPostConnector(2))));
 
   shapes.push_back(TriMesh({
       d.key_q.GetTopLeft(),
@@ -253,19 +272,22 @@ int main() {
         {d.key_g.GetTopRight(), right},
         {d.key_g.GetBottomRight(), right},
 
-        {d.key_th_top3.GetTopRight(), up},
-        {d.key_th_top3.GetTopRight(), right},
-        {d.key_th_top3.GetBottomRight(), right},
-        // {d.key_th_top3.GetBottomRight(), down},
+        {d.key_b.GetTopRight(), right},
+        {d.key_b.GetBottomRight(), right},
 
-        // {d.key_th3.GetTopRight(), up}
-        {d.key_th3.GetTopRight().Translate(-1.5,-5,0), right},
-        {d.key_th3.GetTopRight(), right},
-        {d.key_th3.GetBottomRight(), right},
+        {d.key_th2.GetTopRight(), up},
+        {d.key_th2.GetTopRight(), right},
+        {d.key_th2.GetBottomRight(), down},
+        {d.key_th2.GetBottomLeft(), down},
 
-        {d.key_th_bottom2.GetBottomRight(), right},
-        {d.key_th_bottom2.GetBottomRight(), down},
-        {d.key_th_bottom2.GetBottomLeft(), down},
+        {d.key_th1.GetBottomRight(), down},
+        // {d.key_th3.GetTopRight().Translate(-1.5,-5,0), right},
+        // {d.key_th3.GetTopRight(), right},
+        // {d.key_th3.GetBottomRight(), right},
+
+        // {d.key_th_bottom2.GetBottomRight(), right},
+        // {d.key_th_bottom2.GetBottomRight(), down},
+        // {d.key_th_bottom2.GetBottomLeft(), down},
 
         {d.key_th1.GetBottomLeft(), down},
 
@@ -350,7 +372,7 @@ int main() {
   std::vector<Shape> screw_pegs;
   {
     double screw_height = 5;
-    double screw_radius = 4.4 / 2.0;
+    double screw_radius = 4.4 / 2.0 - 0.2;
     Shape screw_hole = Cylinder(screw_height + .1, screw_radius, 30).TranslateZ(screw_height / 2);
     Shape screw_insert =
         Cylinder(screw_height, screw_radius + 1.65, 30).TranslateZ(screw_height / 2);
@@ -369,15 +391,15 @@ int main() {
     screw_right_top.x -= 1.5;
     screw_right_top.y += -.8;
 
-    glm::vec3 screw_right_bottom = d.key_th_bottom2.GetBottomRight().Apply(kOrigin);
+    glm::vec3 screw_right_bottom = d.key_th2.GetBottomRight().Apply(kOrigin);
     screw_right_bottom.z = 0;
-    screw_right_bottom.y += 5.7;
-    screw_right_bottom.x += -1.9;
+    screw_right_bottom.y += 3;
+    screw_right_bottom.x += -5;
 
-    glm::vec3 screw_right_mid = d.key_th_top3.GetTopRight().Apply(kOrigin);
+    glm::vec3 screw_right_mid = d.key_e.GetTopRight().Apply(kOrigin);
     screw_right_mid.z = 0;
     screw_right_mid.y += 0;
-    screw_right_mid.x += -4.9;
+    screw_right_mid.x += -8;
 
     shapes.push_back(Union(screw_insert.Translate(screw_left_top),
                            screw_insert.Translate(screw_right_top),

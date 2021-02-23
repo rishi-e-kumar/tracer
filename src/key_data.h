@@ -69,7 +69,7 @@ struct KeyData {
 
   std::vector<Key*> thumb_keys() {
     return {
-        &key_th1, &key_th2, &key_th3, &key_th_top3, &key_th_bottom2};
+        &key_th1, &key_th2}; //, &key_th3, &key_th_top3, &key_th_bottom2
   }
 
   std::vector<Key*> all_keys() {
