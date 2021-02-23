@@ -11479,7 +11479,7 @@ mirror ([1.000, 0.000, 0.000]) {
                       cylinder(h = 5.000, r1 = 3.650, r2 = 3.650, center = true, $fn = 30.000);
                     }
                   }
-                  translate ([54.820, 36.373, 0.000]) {
+                  translate ([46.320, 38.173, 0.000]) {
                     translate ([0.000, 0.000, 2.500]) {
                       cylinder(h = 5.000, r1 = 3.650, r2 = 3.650, center = true, $fn = 30.000);
                     }
@@ -11500,56 +11500,33 @@ mirror ([1.000, 0.000, 0.000]) {
                     }
                   }
                 }
-                translate ([56.320, 37.173, 16.500]) {
+                translate ([59.820, 37.173, 14.500]) {
                   union () {
-                    scale ([1.000, 1.000, 1.000]) {
-                      rotate (a = 90.000, v = [0.000, 1.000, 0.000]) {
-                        translate ([0.000, -16.725, 0.000]) {
-                          translate ([0.000, 0.000, -1.600]) {
-                            translate ([0.000, 14.225, 0.000]) {
-                              rotate (a = 90.000, v = [1.000, 0.000, 0.000]) {
-                                linear_extrude (height = 5.000, center = true, convexity = 10.000, twist = 0.000, slices = 20, scale = 1.000) {
-                                  union () {
-                                    square (size = [9.000, 3.200], center = true);
-                                    translate ([4.500, 0.000, 0.000]) {
-                                      circle (r = 1.600);
-                                    }
-                                    translate ([-4.500, 0.000, 0.000]) {
-                                      circle (r = 1.600);
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
                     rotate (a = 90.000, v = [0.000, 1.000, 0.000]) {
                       translate ([0.000, -16.725, 0.000]) {
-                        cube (size = [ 18.150, 33.450, 1.600], center = true);
+                        cube (size = [ 18.150, 33.450, 3.600], center = true);
                       }
                     }
                   }
                 }
               }
               union () {
-                translate ([0.000, 7.000, 0.000]) {
-                  translate ([56.320, 37.173, 16.500]) {
-                    scale ([1.300, 1.300, 1.300]) {
+                translate ([0.000, 6.000, 0.000]) {
+                  translate ([59.820, 37.173, 14.500]) {
+                    scale ([1.000, 1.000, 1.000]) {
                       rotate (a = 90.000, v = [0.000, 1.000, 0.000]) {
                         translate ([0.000, -16.725, 0.000]) {
-                          translate ([0.000, 0.000, -1.600]) {
+                          translate ([0.000, 0.000, -6.600]) {
                             translate ([0.000, 14.225, 0.000]) {
                               rotate (a = 90.000, v = [1.000, 0.000, 0.000]) {
                                 linear_extrude (height = 5.000, center = true, convexity = 10.000, twist = 0.000, slices = 20, scale = 1.000) {
                                   union () {
-                                    square (size = [9.000, 3.200], center = true);
-                                    translate ([4.500, 0.000, 0.000]) {
-                                      circle (r = 1.600);
+                                    square (size = [13.000, 7.300], center = true);
+                                    translate ([6.500, 0.000, 0.000]) {
+                                      circle (r = 3.650);
                                     }
-                                    translate ([-4.500, 0.000, 0.000]) {
-                                      circle (r = 1.600);
+                                    translate ([-6.500, 0.000, 0.000]) {
+                                      circle (r = 3.650);
                                     }
                                   }
                                 }
@@ -11666,7 +11643,7 @@ mirror ([1.000, 0.000, 0.000]) {
                     cylinder(h = 5.100, r1 = 2.000, r2 = 2.000, center = true, $fn = 30.000);
                   }
                 }
-                translate ([54.820, 36.373, 0.000]) {
+                translate ([46.320, 38.173, 0.000]) {
                   translate ([0.000, 0.000, 2.500]) {
                     cylinder(h = 5.100, r1 = 2.000, r2 = 2.000, center = true, $fn = 30.000);
                   }
@@ -11684,6 +11661,13 @@ mirror ([1.000, 0.000, 0.000]) {
                 translate ([-42.964, -38.169, 0.000]) {
                   translate ([0.000, 0.000, 2.500]) {
                     cylinder(h = 5.100, r1 = 2.000, r2 = 2.000, center = true, $fn = 30.000);
+                  }
+                }
+                translate ([31.925, 37.173, 9.500]) {
+                  union () {
+                    rotate (a = 90.000, v = [1.000, 0.000, 0.000]) {
+                      cylinder(h = 30.000, r1 = 4.000, r2 = 4.000, center = true);
+                    }
                   }
                 }
               }
@@ -13844,7 +13828,7 @@ mirror ([1.000, 0.000, 0.000]) {
           cylinder(h = 5.100, r1 = 2.000, r2 = 2.000, center = true, $fn = 30.000);
         }
       }
-      translate ([54.820, 36.373, 0.000]) {
+      translate ([46.320, 38.173, 0.000]) {
         translate ([0.000, 0.000, 2.500]) {
           cylinder(h = 5.100, r1 = 2.000, r2 = 2.000, center = true, $fn = 30.000);
         }

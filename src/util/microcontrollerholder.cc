@@ -40,8 +40,14 @@ Shape MakeUSB(double scale, double length) {
 
 Shape MakeMCU() {
   std::vector<Shape> shapes;
-  shapes.push_back(MakeUSB());
+  // shapes.push_back(MakeUSB());
   shapes.push_back(MakePCB());
+  return UnionAll(shapes);
+}
+
+Shape MakeButtonHole() {
+  std::vector<Shape> shapes;
+  shapes.push_back(Cylinder(30, ButtonDiameter/2).RotateX(90));
   return UnionAll(shapes);
 }
 

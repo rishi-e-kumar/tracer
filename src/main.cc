@@ -388,8 +388,8 @@ int main() {
 
     glm::vec3 screw_right_top = d.key_t.GetTopRight().Apply(kOrigin);
     screw_right_top.z = 0;
-    screw_right_top.x -= 1.5;
-    screw_right_top.y += -.8;
+    screw_right_top.x -= 10;
+    screw_right_top.y += 1;
 
     glm::vec3 screw_right_bottom = d.key_th2.GetBottomRight().Apply(kOrigin);
     screw_right_bottom.z = 0;
@@ -426,7 +426,8 @@ int main() {
 
   // add microcontroller
   glm::vec3 mcu_position = d.key_t.GetTopRight().Apply(kOrigin);
-  mcu_position.z = 16.5;
+  mcu_position.z = 14.5;
+  mcu_position.x += 3.5;
   shapes.push_back(MakeMCU()
                 .Translate(mcu_position));
 
@@ -436,7 +437,7 @@ int main() {
   // mcu usb hole
   negative_shapes.push_back(MakeUSB(MCUSBHolePadScale)
                               .Translate(mcu_position)
-                              .TranslateY(7));
+                              .TranslateY(6));
   Key b_cut = d.key_b;
   b_cut.Configure([&](Key& k) {
     k.AddTransform();
@@ -449,12 +450,11 @@ int main() {
 
 
   // Cut out holes for cords. Inserts can be printed to fit in.
-  Shape trrs_hole = Cylinder(20, 5, 30).RotateX(90);
 
-  glm::vec3 trrs_hole_location = d.key_r.GetTopRight().Apply(kOrigin);
-  trrs_hole_location.z = 11;
+  glm::vec3 trrs_hole_location = d.key_t.GetTopLeft().Apply(kOrigin);
+  trrs_hole_location.z = 9.5;
   trrs_hole_location.x -= 5;
-  // negative_shapes.push_back(trrs_hole.Translate(trrs_hole_location));
+  negative_shapes.push_back(MakeButtonHole().Translate(trrs_hole_location));
 
   {
     Shape bottom = Cube(5, 1.5, 8).TranslateZ(8/2).TranslateY((-5.3 / 2) + (-1.5 / 2));
